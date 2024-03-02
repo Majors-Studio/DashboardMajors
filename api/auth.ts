@@ -1,11 +1,11 @@
-type fakeUserProps = {
+type User = {
     id: number;
     email: string;
     password: string;
 
 }
 
-const fakeUsers: fakeUserProps[] = [
+const fakeUsers: User[] = [
         {
             id: 1,
             email: "marcelo.bracet1@gmail.com",
@@ -21,7 +21,8 @@ const fakeUsers: fakeUserProps[] = [
 export const api = {
     
     login: (email: string, password: string): boolean => {
-        if(fakeUsers.find(user => user.email === email && user.password === password)){
+        if (fakeUsers.find(user => user.email === email && user.password === password)) {
+            localStorage.setItem("loggedIn", "true")
             return true
         }
         
@@ -37,6 +38,10 @@ export const api = {
         alert("User registered")
         fakeUsers.push({id: fakeUsers.length + 1, email, password})
         return true
+    },
+    
+    logout: () => {
+        localStorage.removeItem("loggedIn")
     }
     
     
