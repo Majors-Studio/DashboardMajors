@@ -13,7 +13,7 @@ const WelcomeCard: React.FC = () => {
         backgroundSize: "cover",
       }}
     >
-      <div className="bg-gradient-to-b from-[#060b262c] to-[#1a1f3746] w-full h-full flex flex-col justify-between p-[20px]">
+      <div className="bg-gradient-to-b from-[#060b262c] to-[#1a1f3746] w-full h-full flex flex-col justify-between py-[32px] px-[20px]">
         <section>
           <p
             className="
