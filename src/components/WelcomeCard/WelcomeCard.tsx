@@ -6,8 +6,16 @@ const WelcomeCard: React.FC = () => {
   const welcomeImg = "/welcome/welcome.png";
 
   return (
-    <div
-      className="max-w-[620px] h-full  text-white overflow-hidden rounded-[20px]"
+      <div
+        //   make hidden in mobile
+          className="
+            hidden
+            md:flex
+            
+
+      
+      
+          max-w-[620px] h-full text-white overflow-hidden rounded-[20px]"
       style={{
         backgroundImage: `url(${welcomeImg})`,
         backgroundSize: "cover",
