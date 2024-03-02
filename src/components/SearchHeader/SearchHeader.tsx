@@ -38,13 +38,27 @@ const SearchHeader: React.FC = () => {
   return (
     <AnimatePresence mode="wait" initial={false}>
       <Command
-        className="relative z-20 overflow-visible"
+        className="relative z-20 overflow-visible text-white"
       >
         <CommandInput
           placeholder="Type a command or search..."
           onBlur={() => setOpen(false)}
           onFocus={() => setOpen(true)}
           onClick={() => setOpen(true)}
+          
+          className="
+          w-full
+          bg-transparent
+          text-white
+          border-none
+          focus:outline-none
+          font-semibold
+          px-2
+          py-2
+          rounded-lg
+          shadow-md
+          
+          "
         />
 
         <motion.div
