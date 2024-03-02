@@ -10,7 +10,7 @@ import { Header, Status } from "@/src/sections";
 
 export default function Home() {
   
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
   
    const navItems = navAside.map((nav, index) => {
         return (
@@ -41,6 +41,7 @@ export default function Home() {
         <Header />
         <Status />
       </div>
+      <button onClick={() => setIsOpen(true)} className="fixed bottom-5 left-5 cursor-pointer text-white">abrir</button>
     </main>
   );
 }
