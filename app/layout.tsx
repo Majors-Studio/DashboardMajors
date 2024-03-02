@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 
 import { Toaster } from "@/components/ui/sonner"
 import { cn } from "@/lib/utils";
+import { FormProvider } from "@/contexts/FormContext";
 
 export const fontSans = Inter({
   subsets: ["latin"],
@@ -31,7 +32,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-      <html lang="pt-br">
+    <html lang="pt-br">
+      <FormProvider>
         <body
           className={cn(
             "min-h-screen font-sans antialiased bg-[#060B26]",
@@ -41,6 +43,7 @@ export default function RootLayout({
         {children}
         <Toaster/>
         </body>
+        </FormProvider>
       </html>
   );
 }
