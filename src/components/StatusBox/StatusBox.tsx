@@ -1,15 +1,21 @@
 import { WalletIcon } from "lucide-react";
 import React from "react";
 
-const StatusBox: React.FC = () => {
+export type StatusBoxProps = {
+  title: string;
+  value: string;
+  percentage: string;
+};
+
+const StatusBox: React.FC<StatusBoxProps> = ({percentage,title,value}) => {
   return (
     <div className="w-full h-[80px] bg-gradient-to-r from-[#060b26] to-[#1a1f37] flex flex-row justify-between items-center p-[16px] min-w-[250px] max-w-[350px] rounded-[20px]">
       <section>
         <section>
-          <p className="text-[#A0AEC0] ">Today’s Money</p>
+          <p className="text-[#A0AEC0] ">{title}</p>
         </section>
         <section className="flex flex-row gap-[6px]">
-          <p className="text-white">$53,000</p>
+          <p className="text-white">{value}</p>
           <p className="
                 flex
                 items-center
@@ -19,7 +25,7 @@ const StatusBox: React.FC = () => {
                 text-[#10B981]
                 text-xs
               
-          ">+55%</p>
+          ">{percentage}</p>
         </section>
       </section>
       <section>
