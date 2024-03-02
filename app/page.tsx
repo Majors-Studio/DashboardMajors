@@ -1,6 +1,6 @@
 import { Aside } from "@/src/components/Aside";
 import { BackgroundImage } from "@/src/components/BackgroundImage";
-import { Header, Status } from "@/src/sections";
+import { Board, Header, Status } from "@/src/sections";
 
 export default function Home() {
   return (
@@ -13,6 +13,7 @@ export default function Home() {
       ">
         <Header />
         <Status />
+        <Board />
       </div>
     </main>
   );
