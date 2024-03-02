@@ -1,19 +1,22 @@
 import { NavigationInline } from "@/src/components/NavigationInline";
+import { SearchHeader } from "@/src/components/SearchHeader";
 import React from "react";
 
 const Header: React.FC = () => {
-  const trilha = [
-    { title: 'Home', url: '/' },
-    { title: 'Dashboard' },
-  ];
 
   return (
-    <div>
+      <div className="
+    flex flex-row justify-between
+    items-center
+    mt-[42px]
+    mb-[24px]
+    ">
       <section>
-        <NavigationInline trilha={trilha} />
-        <p>Dashboard</p>
+        <NavigationInline />
       </section>
-      <section></section>
+          <section>
+              <SearchHeader />
+      </section>
     </div>
   );
 };

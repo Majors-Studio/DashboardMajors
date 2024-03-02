@@ -4,14 +4,19 @@ import { Header, Status } from "@/src/sections";
 
 export default function Home() {
   return (
-    <main className="w-screen h-screen flex flex-row justify-start items-start p-[20px] gap-[20px] overflow-hidden relative bg-[#060B26] z-[-10]">
+    <main className="w-full h-screen flex flex-row p-[20px] gap-[20px] overflow-hidden relative">
       <BackgroundImage />
       <Aside />
 
-      <div>
+      <div className="
+        flex flex-col
+        gap-[20px]
+        w-full
+        
+      ">
         <Header />
         <Status />
       </div>
-    </main>
+      </main>
   );
 }
