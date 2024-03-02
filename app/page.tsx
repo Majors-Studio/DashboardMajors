@@ -1,6 +1,6 @@
 import { Aside } from "@/src/components/Aside";
 import { BackgroundImage } from "@/src/components/BackgroundImage";
-import { StatusBox } from "@/src/components/StatusBox";
+import Status from "@/src/sections/Status/Status";
 
 export default function Home() {
   return (
@@ -8,10 +8,9 @@ export default function Home() {
     flex flex-row justify-start items-start p-[20px] gap-[20px] overflow-hidden relative bg-[#060B26] z-[-10]
     ">
       <BackgroundImage />
-
-
       <Aside />
-      <StatusBox/>
+
+      <Status/>
     </main>
   );
 }

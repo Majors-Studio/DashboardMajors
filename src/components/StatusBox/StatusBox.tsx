@@ -10,7 +10,16 @@ const StatusBox: React.FC = () => {
         </section>
         <section className="flex flex-row gap-[6px]">
           <p className="text-white">$53,000</p>
-          <p>+55%</p>
+          <p className="
+                flex
+                items-center
+                justify-center
+                rounded-[12px]
+                p-[4px]
+                text-[#10B981]
+                text-xs
+              
+          ">+55%</p>
         </section>
       </section>
       <section>
