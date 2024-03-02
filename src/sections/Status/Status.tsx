@@ -41,10 +41,14 @@ const Status: React.FC = () => {
       mx-[45px]
     "
     >
-      <CarouselContent>
+      <CarouselContent >
         {statusList.map((status, index) => {
           return (
-            <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
+            <CarouselItem key={index} className="
+            w-full
+            md:basis-1/2 lg:basis-1/3
+            xl:basis-1/4
+            ">
               <StatusBox
                 percentage={status.percentage}
                 title={status.title}
