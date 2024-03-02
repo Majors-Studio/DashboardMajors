@@ -5,6 +5,8 @@ import { BackgroundImage } from "@/src/components/BackgroundImage";
 import { StatusBox } from "@/src/components/StatusBox";
 import { useState } from "react";
 import { navAside } from '@/data/aside/nav-aside';
+import { Header, Status } from "@/src/sections";
+
 
 export default function Home() {
   
@@ -31,12 +33,14 @@ export default function Home() {
     })
   
   return (
-    <main className="w-screen h-screen
-    flex flex-row justify-start items-start p-[20px] gap-[20px] overflow-hidden relative bg-[#060B26] z-[-10]
-    ">
+    <main className="w-screen h-screen flex flex-row justify-start items-start p-[20px] gap-[20px] overflow-hidden relative bg-[#060B26] z-[-10]">
       <BackgroundImage />
       <Aside title="Majors Solutions" isOpen={isOpen} setIsOpen={setIsOpen} children={navItems} />
       <StatusBox/>
+      <div>
+        <Header />
+        <Status />
+      </div>
     </main>
   );
 }

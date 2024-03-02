@@ -10,13 +10,8 @@ const BackgroundImage: React.FC = () => {
         src={relativePath}
           alt="background"
       layout="fill"
-      className="object-cover absolute z-[-1]
-      filter blur-[5px] brightness-50
-
-
       
-      
-      "
+      className="object-cover absolute z-[-1] filter blur-[5px] brightness-50 pointer-events-none"
       />
   );
 };
