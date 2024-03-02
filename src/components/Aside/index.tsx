@@ -38,15 +38,16 @@ export const Aside = ({ title }: AsideProps) => {
       </SheetTrigger>
       <SheetContent
         side={"left"}
-        className={"w-full max-w-full p-8 backdrop-blur-sm text-white bg-gradient-to-r from-[#060B26] from-70% to-[#1A1F37]"}
+        className={"w-full max-w-full p-8 backdrop-blur-sm text-white bg-gradient-to-r from-[#060B26] from-70% to-[#1A1F37] justify-between flex flex-col"}
       >
-        <SheetHeader className="mb-5">
+        <SheetHeader className="mb-4">
           <SheetTitle className="">{title}</SheetTitle>
           <SheetDescription className="">
             Navigation for the app
           </SheetDescription>
+        <Separator className="mt-5 bg-white" />
         </SheetHeader>
-        <Separator className="my-5 bg-white" />
+        <div className="h-full">
         {navAside.map((nav, index) => {
           return (
             <div className="text-white mb-5" key={index}>
@@ -76,7 +77,11 @@ export const Aside = ({ title }: AsideProps) => {
             </div>
           );
         })}
-        <SheetFooter>
+        </div>
+          
+        <SheetFooter className="
+          w-full max-w-full
+        ">
           <AsideMessage />
         </SheetFooter>
       </SheetContent>
