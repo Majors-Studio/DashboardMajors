@@ -3,7 +3,7 @@ import React from "react";
 
 const StatusBox: React.FC = () => {
   return (
-    <div className="w-full h-[80px] bg-gradient-to-r from-[#060b26] to-[#1a1f37] flex flex-row justify-between items-center p-[16px] min-w-[250px] max-w-[350px]">
+    <div className="w-full h-[80px] bg-gradient-to-r from-[#060b26] to-[#1a1f37] flex flex-row justify-between items-center p-[16px] min-w-[250px] max-w-[350px] rounded-[20px]">
       <section>
         <section>
           <p className="text-[#A0AEC0] ">Today’s Money</p>
