@@ -13,13 +13,14 @@ import { Separator } from "@/components/ui/separator";
 import { navAside } from "@/data/aside/nav-aside";
 import { cn } from "@/lib/utils";
 import { toast } from "sonner";
+import HamburguerIcon from "@/src/assets/icons/Hamburguer/HamburguerIcon";
 
 type AsideProps = {
   title: string;
 };
 
 export const Aside = ({ title }: AsideProps) => {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
   const userLoggedIn = localStorage.getItem("loggedIn") === "true";
 
   const handleTriggerClick = () => {
@@ -30,12 +31,12 @@ export const Aside = ({ title }: AsideProps) => {
   
   return (
     <Sheet open={isOpen} onOpenChange={setIsOpen}>
-      <SheetTrigger onClick={handleTriggerClick} className="fixed bottom-5 left-5 cursor-pointer text-white">
-        abrir
+      <SheetTrigger onClick={handleTriggerClick} className="fixed top-5 left-5 cursor-pointer text-white">
+        <HamburguerIcon className="w-8 h-8" />
       </SheetTrigger>
       <SheetContent
         side={"left"}
-        className={cn("w-full max-w-full p-8 backdrop-blur-sm text-white bg-gradient-to-r from-[#060B26] from-70% to-[#1A1F37]", userLoggedIn ? 'blur-none' : 'blur-sm ')}
+        className={"w-full max-w-full p-8 backdrop-blur-sm text-white bg-gradient-to-r from-[#060B26] from-70% to-[#1A1F37]"}
       >
         <SheetHeader className="mb-5">
           <SheetTitle className="">{title}</SheetTitle>
@@ -47,7 +48,7 @@ export const Aside = ({ title }: AsideProps) => {
         {navAside.map((nav, index) => {
           return (
             <div className="text-white mb-5" key={index}>
-              <h2 className="tracking-wide text-sm">{nav.subtitle}</h2>
+              <h2 className="tracking-wide text-xs">{nav.subtitle}</h2>
               <ul className="cursor-pointer">
                 {nav.items.map((item, index) => {
                   return (
