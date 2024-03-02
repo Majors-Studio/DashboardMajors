@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useSpring } from "framer-motion";
 import {
   Command,
   CommandEmpty,
@@ -25,52 +25,48 @@ import {
 const SearchHeader: React.FC = () => {
   const [open, setOpen] = React.useState(false);
 
-  const toggleOpen = () => setOpen(!open);
-  const contentRef = React.useRef<HTMLDivElement>(null);
+  const height = useSpring(0, { stiffness: 300, damping: 30 });
 
   React.useEffect(() => {
     if (open) {
-      contentRef.current?.focus();
+      height.set(200);
+    } else {
+      height.set(0);
     }
   }, [open]);
 
-  React.useEffect(() => {
-    const handleEscape = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        setOpen(false);
-      }
-    };
-
-    window.addEventListener("keydown", handleEscape);
-
-    return () => {
-      window.removeEventListener("keydown", handleEscape);
-    };
-  }, []);
-
   return (
     <AnimatePresence mode="wait" initial={false}>
-      <Command className="rounded-lg border shadow-md relative">
+      <Command
+        className="relative z-20 overflow-visible text-white"
+      >
         <CommandInput
           placeholder="Type a command or search..."
           onBlur={() => setOpen(false)}
-                  onFocus={() => setOpen(true)}
-                  onClick={() => setOpen(true)}
-              />
-              {open && (
-                  
-        <motion.div
-          ref={contentRef}
+          onFocus={() => setOpen(true)}
+          onClick={() => setOpen(true)}
+          
           className="
-            bg-white
-            rounded-lg
-            shadow-md
-                  "
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.95 }}
-                  transition={{ duration: 0.1 }}
-                  
+          w-full
+          bg-transparent
+          text-white
+          border-none
+          focus:outline-none
+          font-semibold
+          px-2
+          py-2
+          rounded-lg
+          shadow-md
+          
+          "
+        />
+
+        <motion.div
+          className="rounded-lg shadow-md absolute top-14 left-0 right-0 z-10 bg-gradient-to-r from-[#060B26] to-[#1A1F37] w-full overflow-hidden"
+          style={{
+            height,
+            color: "white",
+          }}
         >
           <CommandList>
             <CommandEmpty>No results found.</CommandEmpty>
@@ -107,9 +103,7 @@ const SearchHeader: React.FC = () => {
               </CommandItem>
             </CommandGroup>
           </CommandList>
-                  </motion.div>
-              )}
-                  
+        </motion.div>
       </Command>
     </AnimatePresence>
   );
