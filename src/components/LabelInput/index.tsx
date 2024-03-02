@@ -3,14 +3,18 @@ import React from 'react';
 interface LabelInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
     label: string;
     type: string;
-    placeholder: string;
+  placeholder: string;
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const LabelInput = ({label, type, placeholder}: LabelInputProps) => {
+const LabelInput = ({label, type, placeholder, value, onChange}: LabelInputProps) => {
   return (
-    <div className="w-screen flex flex-col ">
-      <label className="text-sm text-gray-500">{label}</label>
+    <div className="w-screen flex flex-col">
+      <label className="text-sm text-gray-500 mt-2">{label}</label>
       <input
+        value={value}
+        onChange={onChange}
         type={type}
         placeholder={placeholder}
         className="

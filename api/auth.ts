@@ -29,7 +29,7 @@ export const api = {
         return false
     },
     
-    register: (email: string, password: string): boolean => {
+    register: (name: string, email: string, password: string): boolean => {
         if (fakeUsers.find(user => user.email === email)) {
             console.error("Email already exists")
             return false
