@@ -10,7 +10,7 @@ import { Header, Status } from "@/src/sections";
 
 export default function Home() {
   
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
   
    const navItems = navAside.map((nav, index) => {
         return (
@@ -19,7 +19,7 @@ export default function Home() {
                 <ul className="cursor-pointer">
                     {nav.items.map((item, index) => {
                         return (
-                            <li className="capitalize mt-2 p-1 rounded-lg hover:bg-[#1A1F37]" key={index}>
+                            <li className="capitalize mt-2 p-1 rounded-lg back drop-shadow-sm hover:bg-[#1A1F37]" key={index}>
                                 <a className="flex items-center gap-3 my-2" href={item.href}>
                                     {item.icon && <item.icon className={"rounded-lg bg-[#1A1F37] p-1 w-7 h-7"} />}
                                     {item.name}
