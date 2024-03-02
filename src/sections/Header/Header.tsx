@@ -1,6 +1,7 @@
 import { AuthButton } from "@/src/components/AuthButton";
 import { ConfigButton } from "@/src/components/ConfigButton";
 import { NavigationInline } from "@/src/components/NavigationInline";
+import { NotificationButton } from "@/src/components/NotificationButton";
 import { SearchHeader } from "@/src/components/SearchHeader";
 import React from "react";
 
@@ -27,6 +28,7 @@ const Header: React.FC = () => {
         <SearchHeader />
         <AuthButton />
         <ConfigButton />
+        <NotificationButton />
       </section>
     </div>
   );
