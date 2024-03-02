@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import {
   Sheet,
   SheetContent,
@@ -11,6 +11,8 @@ import {
 } from "@/components/ui/sheet";
 import { Separator } from "@/components/ui/separator";
 import { navAside } from "@/data/aside/nav-aside";
+import { cn } from "@/lib/utils";
+import { toast } from "sonner";
 
 type AsideProps = {
   title: string;
@@ -18,15 +20,22 @@ type AsideProps = {
 
 export const Aside = ({ title }: AsideProps) => {
   const [isOpen, setIsOpen] = useState(true);
+  const userLoggedIn = localStorage.getItem("loggedIn") === "true";
 
+  const handleTriggerClick = () => {
+    if (!userLoggedIn) {
+      return toast("Você precisa estar logado para acessar essa funcionalidade")
+    }
+  }
+  
   return (
     <Sheet open={isOpen} onOpenChange={setIsOpen}>
-      <SheetTrigger className="fixed bottom-5 left-5 cursor-pointer text-white">
+      <SheetTrigger onClick={handleTriggerClick} className="fixed bottom-5 left-5 cursor-pointer text-white">
         abrir
       </SheetTrigger>
       <SheetContent
         side={"left"}
-        className="w-full max-w-full p-8 backdrop-blur-sm text-white bg-gradient-to-r from-[#060B26] from-70% to-[#1A1F37]"
+        className={cn("w-full max-w-full p-8 backdrop-blur-sm text-white bg-gradient-to-r from-[#060B26] from-70% to-[#1A1F37]", userLoggedIn ? 'blur-none' : 'blur-sm ')}
       >
         <SheetHeader className="mb-5">
           <SheetTitle className="">{title}</SheetTitle>
