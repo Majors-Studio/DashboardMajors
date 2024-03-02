@@ -24,7 +24,7 @@ const NotificationButton: React.FC = () => {
   return (
     <Drawer>
       <DrawerTrigger asChild>
-        <Button variant="outline" className="text-white"><BellIcon size='20px'/></Button>
+        <Button variant="destructive" className="text-white"><BellIcon size='20px'/></Button>
       </DrawerTrigger>
       <DrawerContent>
         <div className="mx-auto w-full max-w-sm">

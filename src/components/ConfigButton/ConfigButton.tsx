@@ -21,7 +21,7 @@ const ConfigButton: React.FC = () => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline" className="text-white">
+        <Button variant="destructive" className="text-white">
           <CogIcon size="20px" />
         </Button>
       </DropdownMenuTrigger>

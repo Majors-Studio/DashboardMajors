@@ -22,7 +22,7 @@ const AuthButton: React.FC = () => {
         <Button
           className="
         text-white flex flex-row gap-2 align-center"
-          variant="outline"
+          variant="destructive"
         >
           <UserIcon size="16px" />
           Sign In
