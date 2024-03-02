@@ -5,12 +5,14 @@ import {
   Sheet,
   SheetContent,
   SheetDescription,
+  SheetFooter,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { Separator } from "@/components/ui/separator";
 import { navAside } from "@/data/aside/nav-aside";
+import AsideMessage from "../AsideMessage/AsideMessage";
 
 type AsideProps = {
   title: string;
@@ -64,6 +66,9 @@ export const Aside = ({ title }: AsideProps) => {
             </div>
           );
         })}
+        <SheetFooter>
+          <AsideMessage />
+        </SheetFooter>
       </SheetContent>
     </Sheet>
   );
