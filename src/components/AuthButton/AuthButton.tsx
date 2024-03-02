@@ -23,8 +23,8 @@ const AuthButton: React.FC = () => {
           className="
         text-white flex flex-row gap-2 align-center"
           variant="outline"
-              >
-                  <UserIcon size='16px'/>
+        >
+          <UserIcon size="16px" />
           Sign In
         </Button>
       </DialogTrigger>
