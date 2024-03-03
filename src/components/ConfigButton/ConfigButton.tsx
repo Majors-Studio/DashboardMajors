@@ -1,5 +1,7 @@
-import React from "react";
+'use client'
 
+import React from "react";
+import { useHotkeys } from "react-hotkeys-hook";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -16,8 +18,18 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { CogIcon } from "lucide-react";
+import { api } from "@/api/auth";
+import { useAuth } from "@/contexts/AuthContext";
 
 const ConfigButton: React.FC = () => {
+  const { userLoggedIn, setUserLoggedIn } = useAuth()
+  useHotkeys('ctrl + q', () => {
+    if (userLoggedIn) {
+      api.logout()
+      setUserLoggedIn(false)
+    }
+  })
+  
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -25,7 +37,7 @@ const ConfigButton: React.FC = () => {
           <CogIcon size="20px" />
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-56">
+      <DropdownMenuContent className="w-56 bg-black text-white">
         <DropdownMenuLabel>My Account</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
@@ -52,7 +64,7 @@ const ConfigButton: React.FC = () => {
           <DropdownMenuSub>
             <DropdownMenuSubTrigger>Invite users</DropdownMenuSubTrigger>
             <DropdownMenuPortal>
-              <DropdownMenuSubContent>
+              <DropdownMenuSubContent className="text-white bg-black">
                 <DropdownMenuItem>Email</DropdownMenuItem>
                 <DropdownMenuItem>Message</DropdownMenuItem>
                 <DropdownMenuSeparator />
@@ -70,10 +82,11 @@ const ConfigButton: React.FC = () => {
         <DropdownMenuItem>Support</DropdownMenuItem>
         <DropdownMenuItem disabled>API</DropdownMenuItem>
         <DropdownMenuSeparator />
-        <DropdownMenuItem>
+        {userLoggedIn && ( <DropdownMenuItem>
           Log out
-          <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
-        </DropdownMenuItem>
+          <DropdownMenuShortcut>CTRL+Q</DropdownMenuShortcut>
+        </DropdownMenuItem>)}
+       
       </DropdownMenuContent>
     </DropdownMenu>
   );
