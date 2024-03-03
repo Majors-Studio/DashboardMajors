@@ -44,6 +44,7 @@ export const navAside = [
                 href: "/signup",
                 icon: Table2,
             }
+
         ]
     }
 ];

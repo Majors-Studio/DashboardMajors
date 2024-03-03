@@ -10,7 +10,7 @@ const SignIn: React.FC = () => {
         <div className='flex-1'>
             <Image src={authImage} alt="Auth Image" className="w-full h-full object-cover" />
         </div>
-        <div className='flex-1 flex flex-col justify-center items-center '>
+        <div className='flex-1 flex flex-col justify-center items-center'>
             <SignInForm/>
         </div>
     </section>;

@@ -6,8 +6,14 @@ import Button from '../../Button';
 import AuthTitleDescription from '../../AuthTitleDescription';
 import SignUpForm from '../SignUpForm';
 import { useForm } from '@/contexts/FormContext';
+import { api } from '@/api/auth';
+import { useRouter } from 'next/navigation';
+import { useAuth } from '@/contexts/AuthContext';
 
 const SignInForm = () => {
+  
+  const router = useRouter();
+  const { setUserLoggedIn } = useAuth();
   
   const { formType, setFormType } = useForm();
   
@@ -16,6 +22,20 @@ const SignInForm = () => {
   
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    
+    try {
+      let response = api.login(email, password)
+      
+      if (response) {
+        setUserLoggedIn(true);
+        return router.replace('/');
+      }
+
+      return console.error('Erro ao logar usuário');
+
+    } catch (err) {
+      console.error(err);
+    }
     }
   
   return formType === 'signin' ? <form onSubmit={handleSubmit} className="w-[500px]">

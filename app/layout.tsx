@@ -5,6 +5,7 @@ import { Inter } from "next/font/google";
 import { Toaster } from "@/components/ui/sonner"
 import { cn } from "@/lib/utils";
 import { FormProvider } from "@/contexts/FormContext";
+import { AuthProvider } from "@/contexts/AuthContext";
 
 export const fontSans = Inter({
   subsets: ["latin"],
@@ -33,17 +34,19 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-br">
-      <FormProvider>
-        <body
-          className={cn(
-            "min-h-screen font-sans antialiased bg-[#060B26]",
-            fontSans.variable
-          )}
-        >
-        {children}
-        <Toaster/>
-        </body>
-        </FormProvider>
+      <AuthProvider>
+        <FormProvider>
+          <body
+            className={cn(
+              "min-h-screen font-sans antialiased bg-[#060B26]",
+              fontSans.variable
+            )}
+          >
+          {children}
+          <Toaster/>
+          </body>
+          </FormProvider>
+      </AuthProvider>
       </html>
   );
 }

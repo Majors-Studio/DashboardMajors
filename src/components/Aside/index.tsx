@@ -13,9 +13,9 @@ import {
 import { Separator } from "@/components/ui/separator";
 import { navAside } from "@/data/aside/nav-aside";
 import AsideMessage from "../AsideMessage/AsideMessage";
-import { cn } from "@/lib/utils";
 import { toast } from "sonner";
 import HamburguerIcon from "@/src/assets/icons/Hamburguer/HamburguerIcon";
+import { useAuth } from "@/contexts/AuthContext";
 
 type AsideProps = {
   title: string;
@@ -23,7 +23,7 @@ type AsideProps = {
 
 export const Aside = ({ title }: AsideProps) => {
   const [isOpen, setIsOpen] = useState(false);
-  const userLoggedIn = localStorage.getItem("loggedIn") === "true";
+  const { userLoggedIn } = useAuth();
 
   const handleTriggerClick = () => {
     if (!userLoggedIn) {

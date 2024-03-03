@@ -22,7 +22,7 @@ export const api = {
     
     login: (email: string, password: string): boolean => {
         if (fakeUsers.find(user => user.email === email && user.password === password)) {
-            localStorage.setItem("loggedIn", "true")
+            localStorage.setItem("loggedIn", 'true')
             return true
         }
         

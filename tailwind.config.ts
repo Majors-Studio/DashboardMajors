@@ -19,7 +19,7 @@ const config = {
     },
     extend: {
       colors: {
-        
+        "destructive": "#FF3B30",
       },
       borderRadius: {
         

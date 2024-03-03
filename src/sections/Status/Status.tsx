@@ -1,3 +1,5 @@
+'use client'
+
 import { StatusBox } from "@/src/components/StatusBox";
 import React from "react";
 
@@ -9,8 +11,12 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { StatusBoxProps } from "@/src/components/StatusBox/StatusBox";
+import { useAuth } from "@/contexts/AuthContext";
 
 const Status: React.FC = () => {
+  
+  const { userLoggedIn } = useAuth();
+  
   const statusList: StatusBoxProps[] = [
     {
       percentage: "+10%",
@@ -50,9 +56,9 @@ const Status: React.FC = () => {
             xl:basis-1/4
             ">
               <StatusBox
-                percentage={status.percentage}
+                percentage={userLoggedIn ? status.percentage : ''}
                 title={status.title}
-                value={status.value}
+                value={userLoggedIn ? status.value : 'R$ ****' }
               />
             </CarouselItem>
           );

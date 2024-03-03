@@ -12,10 +12,14 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { UserIcon } from "lucide-react";
+import { UserIcon, LogOut } from "lucide-react";
 import { api } from "@/api/auth";
 import SignInForm from "../Forms/SignInForm";
 import SignUpForm from "../Forms/SignUpForm";
+import Link from "next/link";
+import { useAuth } from "@/contexts/AuthContext";
+import { useForm } from "@/contexts/FormContext";
+import { DialogClose } from "@radix-ui/react-dialog";
 
 type AuthDialogProps = {
   title: string;
@@ -28,34 +32,58 @@ type AuthDialogProps = {
 };
 
 const AuthDialog = ({ title, description, inputs }: AuthDialogProps) => {
-  const [formType, setFormType] = React.useState<"signin" | "signup">("signin");
+  const { userLoggedIn, setUserLoggedIn } = useAuth();
+  const { formType, setFormType } = useForm();
+  
+  const CloseDialog: React.FC = () => {
+    return (
+      <Dialog>
+        <DialogTrigger>Open</DialogTrigger>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Are you absolutely sure?</DialogTitle>
+            <DialogDescription>
+              This action cannot be undone. This will permanently delete your account
+              and remove your data from our servers.
+            </DialogDescription>
+          </DialogHeader>
+        </DialogContent>
+      </Dialog>
+    )
+  };
   
   return (
     <Dialog>
-      <DialogTrigger asChild>
-        <Button
+      {!userLoggedIn ? <Link className="flex w-full" href="/signin">
+        <div
           className="
-        text-white flex flex-row gap-2 align-center"
-          variant="destructive"
+        text-white flex flex-row gap-2 items-center w-full justify-center"
         >
           <UserIcon size="16px" />
           Sign In
-        </Button>
-      </DialogTrigger>
-      <DialogContent className="sm:max-w-[425px]">
-        <DialogHeader className="text-white">
-          <DialogTitle>{title}</DialogTitle>
-          <DialogDescription>
-            {description}
-          </DialogDescription>
-        </DialogHeader>
-        {formType === "signin" && <SignInForm/>}
-        {formType === "signup" && <SignUpForm/>}
-        {formType === "signin" ? <p className="text-white text-sm mt-2">Ainda não possui uma conta? <span onClick={() => setFormType('signup')} className="text-[#0075ff] cursor-pointer">Registre-se</span></p> : <p className="text-white text-sm mt-2">Já possui uma conta? <span onClick={() => setFormType('signin')} className="text-[#0075ff] cursor-pointer">Login</span></p>}
-        <DialogFooter>
-          <Button className="text-white" variant="destructive" type="submit">
-            Save changes
-          </Button>
+        </div>
+      </Link> : <div className="flex w-full cursor-pointer">
+        <DialogTrigger>
+        <div
+          className="
+        text-white flex flex-row gap-2 items-center w-full justify-center"
+        >
+          <LogOut size="16px" />
+          Sign Up
+            </div>
+            </DialogTrigger>
+      </div>}
+      <DialogContent className="sm:max-w-[425px] ">
+        <h1 className="text-white">Tem certeza que deseja sair da sua conta?</h1>
+        <p className="text-[#A0AEC0] text-sm md:text-md">
+          Se você sair, você será redirecionado para a página inicial.</p>
+        <DialogFooter className="text-white">
+          <DialogClose>
+          <Button
+              variant={"destructive"}
+              onClick={() => { api.logout(); setUserLoggedIn(false) }} >Sair</Button>
+            </DialogClose>
+          <DialogClose><Button variant={"outline"} onClick={() => { }} >Cancelar</Button></DialogClose>
         </DialogFooter>
       </DialogContent>
     </Dialog>
