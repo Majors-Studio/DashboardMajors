@@ -10,19 +10,9 @@ export const navAside = [
         icon: Home,
       },
       {
-        name: 'Tables',
-        href: '/tables',
-        icon: Table,
-      },
-      {
-        name: 'Billing',
-        href: '/billing',
+        name: 'Majors Leads',
+        href: '/leads',
         icon: Table2,
-      },
-      {
-        name: 'RTL',
-        href: '/tables',
-        icon: ArrowRightToLineIcon,
       },
     ],
   },
@@ -33,16 +23,6 @@ export const navAside = [
         name: 'Profile',
         href: '/profile',
         icon: Home,
-      },
-      {
-        name: 'Sign In',
-        href: '/signin',
-        icon: Table,
-      },
-      {
-        name: 'Sign Up',
-        href: '/signup',
-        icon: Table2,
       },
     ],
   },

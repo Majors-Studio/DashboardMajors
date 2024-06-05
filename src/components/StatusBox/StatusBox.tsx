@@ -3,7 +3,7 @@ import React from "react";
 
 export type StatusBoxProps = {
   title: string;
-  value: string;
+  value: string | number;
   percentage: string;
 };
 

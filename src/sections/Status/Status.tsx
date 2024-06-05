@@ -1,7 +1,7 @@
 'use client'
 
-import { StatusBox } from "@/src/components/StatusBox";
-import React from "react";
+import { StatusBox } from '@/src/components/StatusBox'
+import React from 'react'
 
 import {
   Carousel,
@@ -9,36 +9,37 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from "@/components/ui/carousel";
-import { StatusBoxProps } from "@/src/components/StatusBox/StatusBox";
-import { useAuth } from "@/contexts/AuthContext";
+} from '@/components/ui/carousel'
+import { StatusBoxProps } from '@/src/components/StatusBox/StatusBox'
+import { useAuth } from '@/contexts/AuthContext'
+import { useLeads } from '@/contexts/LeadsContext'
 
 const Status: React.FC = () => {
-  
-  const { userLoggedIn } = useAuth();
-  
+  const { userLoggedIn } = useAuth()
+  const { leads } = useLeads()
+
   const statusList: StatusBoxProps[] = [
     {
-      percentage: "+10%",
-      title: "Total Revenue",
-      value: "$1,200",
+      percentage: '+10%',
+      title: 'Total Leads',
+      value: leads.length,
     },
     {
-      percentage: "-5%",
-      title: "Total Cost",
-      value: "$1,200",
+      percentage: '-5%',
+      title: 'Total Cost',
+      value: '$1,200',
     },
     {
-      percentage: "+10%",
-      title: "Total Revenue",
-      value: "$1,200",
+      percentage: '+10%',
+      title: 'Total Revenue',
+      value: '$1,200',
     },
     {
-      percentage: "-5%",
-      title: "Total Cost",
-      value: "$1,200",
+      percentage: '-5%',
+      title: 'Total Cost',
+      value: '$1,200',
     },
-  ];
+  ]
 
   return (
     <Carousel
@@ -47,21 +48,24 @@ const Status: React.FC = () => {
       mx-[45px]
     "
     >
-      <CarouselContent >
+      <CarouselContent>
         {statusList.map((status, index) => {
           return (
-            <CarouselItem key={index} className="
+            <CarouselItem
+              key={index}
+              className="
             w-full
             md:basis-1/2 lg:basis-1/3
             xl:basis-1/4
-            ">
+            "
+            >
               <StatusBox
                 percentage={userLoggedIn ? status.percentage : ''}
                 title={status.title}
-                value={userLoggedIn ? status.value : 'R$ ****' }
+                value={userLoggedIn ? status.value : 'R$ ****'}
               />
             </CarouselItem>
-          );
+          )
         })}
       </CarouselContent>
       <CarouselPrevious
@@ -75,7 +79,7 @@ const Status: React.FC = () => {
       "
       />
     </Carousel>
-  );
-};
+  )
+}
 
-export default Status;
+export default Status

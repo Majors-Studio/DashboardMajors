@@ -7,6 +7,7 @@ import { cn } from '@/lib/utils'
 import { FormProvider } from '@/contexts/FormContext'
 import { AuthProvider } from '@/contexts/AuthContext'
 import { TransactionProvider } from '@/contexts/TransactionContext'
+import { LeadsProvider } from '@/contexts/LeadsContext'
 
 export const fontSans = Inter({
   subsets: ['latin'],
@@ -36,19 +37,21 @@ export default function RootLayout({
   return (
     <html lang="pt-br">
       <AuthProvider>
-        <TransactionProvider>
-          <FormProvider>
-            <body
-              className={cn(
-                'min-h-screen font-sans antialiased bg-[#060B26]',
-                fontSans.variable
-              )}
-            >
-              {children}
-              <Toaster />
-            </body>
-          </FormProvider>
-        </TransactionProvider>
+        <LeadsProvider>
+          <TransactionProvider>
+            <FormProvider>
+              <body
+                className={cn(
+                  'min-h-screen font-sans antialiased bg-[#060B26]',
+                  fontSans.variable
+                )}
+              >
+                {children}
+                <Toaster />
+              </body>
+            </FormProvider>
+          </TransactionProvider>
+        </LeadsProvider>
       </AuthProvider>
     </html>
   )
